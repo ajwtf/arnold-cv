@@ -161,9 +161,10 @@ export default function Page() {
                     <h3 className="font-semibold leading-none">
                       {education.school}
                     </h3>
-                    <div className="text-sm text-gray-500">
+
+                    {/* <div className="text-sm text-gray-500">
                       {education.start} - {education.end}
-                    </div>
+                    </div> */}
                   </div>
                 </CardHeader>
                 <CardContent className="mt-2 print:text-[12px] font-sans">
