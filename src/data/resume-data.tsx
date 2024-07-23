@@ -1,4 +1,5 @@
 import { GitHubIcon, LinkedInIcon } from '@/components/icons';
+import { MailIcon } from '@/components/icons/MailIcon';
 
 export const RESUME_DATA = {
   name: "aj southammavong",
@@ -10,9 +11,15 @@ export const RESUME_DATA = {
   summary:
     "As a Full Stack Engineer, I specialize in taking products from concept to launch. I excel in working with teams and creating environments where individuals perform at their best. Currently, I work mostly with Python, TypeScript, React, Node.js, and PostgreSQL.",
   avatarUrl: "",
-  personalWebsiteUrl: "https://arnold.rip",
+  websiteUrl: "https://arnold.rip",
+  cvUrl:
+    "https://drive.google.com/file/d/1YxssSR_6g5GyBPznG38MxSdjjLJiu0T2/view?usp=sharing",
   contact: {
-    email: "arnoldsouth@gmail.com",
+    email: {
+      emailAddress: "arnoldsouth@gmail.com",
+      url: "mailto:arnoldsouth@gmail.com",
+      icon: MailIcon,
+    },
     // tel: "",
     social: [
       {
@@ -92,7 +99,7 @@ export const RESUME_DATA = {
   projects: [
     {
       title: "AI Budget Tracker",
-      techStack: ["TypeScript", "React", "Node.js", "PostgreSQL"],
+      techStack: ["TypeScript", "React", "Node.js", "Express", "PostgreSQL"],
       description:
         "AI-powered budget tracking tool that helps users manage their finances.",
       link: {

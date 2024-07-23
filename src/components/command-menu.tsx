@@ -12,7 +12,9 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
+  CommandShortcut,
 } from '@/components/ui/command';
+import { RESUME_DATA } from '@/data/resume-data';
 
 import { Button } from './ui/button';
 
@@ -44,18 +46,54 @@ export const CommandMenu = ({ links }: Props) => {
         </kbd>{" "}
         to open the command menu
       </p>
+
       <Button
         onClick={() => setOpen((open) => !open)}
         variant="outline"
         size="icon"
         className="fixed bottom-4 right-4 flex rounded-full shadow-2xl print:hidden xl:hidden"
       >
-        <CommandIcon className="my-6 size-6" />
+        <CommandIcon className="my-6 size-4 print:hidden" />
       </Button>
+
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
+
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>No results found</CommandEmpty>
+
+          <CommandGroup heading="CV">
+            <CommandItem
+              onSelect={() => {
+                setOpen(false);
+                window.open(RESUME_DATA.cvUrl, "_blank");
+              }}
+            >
+              <span>CV</span>
+            </CommandItem>
+          </CommandGroup>
+
+          <CommandSeparator />
+
+          <CommandGroup heading="Socials">
+            {links.map(({ url, title }) => (
+              <CommandItem
+                key={url}
+                onSelect={() => {
+                  setOpen(false);
+                  window.open(url, "_blank");
+                }}
+                onClick={() => {
+                  console.log(`Opening ${title}`);
+                }}
+              >
+                <span>{title}</span>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+
+          <CommandSeparator />
+
           <CommandGroup heading="Actions">
             <CommandItem
               onSelect={() => {
@@ -64,22 +102,9 @@ export const CommandMenu = ({ links }: Props) => {
               }}
             >
               <span>Print</span>
+              <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
           </CommandGroup>
-          <CommandGroup heading="Links">
-            {links.map(({ url, title }) => (
-              <CommandItem
-                key={url}
-                onSelect={() => {
-                  setOpen(false);
-                  window.open(url, "_blank");
-                }}
-              >
-                <span>{title}</span>
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandSeparator />
         </CommandList>
       </CommandDialog>
     </>

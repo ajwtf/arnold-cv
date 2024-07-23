@@ -1,4 +1,3 @@
-import { MailIcon } from 'lucide-react';
 import { Metadata } from 'next';
 
 import { CommandMenu } from '@/components/command-menu';
@@ -58,8 +57,8 @@ export default function Page() {
                   size="icon"
                   asChild
                 >
-                  <a href={`mailto:${RESUME_DATA.contact.email}`}>
-                    <MailIcon className="size-4" />
+                  <a href={RESUME_DATA.contact.email.url}>
+                    <RESUME_DATA.contact.email.icon className="size-4" />
                   </a>
                 </Button>
               ) : null}
@@ -80,8 +79,10 @@ export default function Page() {
 
             <div className="hidden flex-col gap-x-1 text-sm text-muted-foreground print:flex print:text-[12px]">
               {RESUME_DATA.contact.email ? (
-                <a href={`mailto:${RESUME_DATA.contact.email}`}>
-                  <span className="underline">{RESUME_DATA.contact.email}</span>
+                <a href={RESUME_DATA.contact.email.url}>
+                  <span className="underline">
+                    {RESUME_DATA.contact.email.url}
+                  </span>
                 </a>
               ) : null}
 
@@ -210,9 +211,10 @@ export default function Page() {
       <CommandMenu
         links={[
           {
-            url: RESUME_DATA.personalWebsiteUrl,
-            title: "Personal Website",
+            url: RESUME_DATA.websiteUrl,
+            title: "Website",
           },
+
           ...RESUME_DATA.contact.social.map((socialMediaLink) => ({
             url: socialMediaLink.url,
             title: socialMediaLink.name,
