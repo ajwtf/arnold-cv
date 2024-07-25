@@ -2,6 +2,7 @@ import { GitHubIcon, LinkedInIcon } from '@/components/icons';
 import { MailIcon } from '@/components/icons/MailIcon';
 
 export const RESUME_DATA = {
+  websiteTitle: "aj",
   name: "aj southammavong",
   initials: "aj",
   location: "Oakland, CA, USA",

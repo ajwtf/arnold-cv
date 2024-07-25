@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { CommandMenu } from '@/components/command-menu';
+import { CommandPalette } from '@/components/command-palette';
 import { ProjectCard } from '@/components/project-card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -10,7 +10,7 @@ import { Section } from '@/components/ui/section';
 import { RESUME_DATA } from '@/data/resume-data';
 
 export const metadata: Metadata = {
-  title: `${RESUME_DATA.name} | ${RESUME_DATA.about}`,
+  title: `${RESUME_DATA.websiteTitle}`,
   description: RESUME_DATA.summary,
 };
 
@@ -20,6 +20,8 @@ export default function Page() {
       <section className="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex-1 space-y-1.5">
+            <div className="my-10 print:hidden xl:hidden"></div>
+
             <h1 className="text-2xl font-bold">{RESUME_DATA.name}</h1>
             <p className="max-w-md text-pretty text-sm text-muted-foreground print:text-[12px]">
               {RESUME_DATA.about}
@@ -208,7 +210,7 @@ export default function Page() {
         </Section>
       </section>
 
-      <CommandMenu
+      <CommandPalette
         links={[
           {
             url: RESUME_DATA.websiteUrl,
