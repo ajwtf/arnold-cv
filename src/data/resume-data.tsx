@@ -11,7 +11,8 @@ export const RESUME_DATA = {
     "Analytical and data-driven Full Stack Engineer. Passion for building things that make people's lives easier.",
   summary:
     "As a Full Stack Engineer, I specialize in taking products from concept to launch. I excel in working with teams and creating environments where individuals perform at their best. Currently, I work mostly with Python, TypeScript, React, Node.js, and PostgreSQL.",
-  avatarUrl: "",
+  avatarUrl:
+    "https://github.com/ajwtf/arnold-cv/blob/main/src/app/glasses.gif?raw=true",
   websiteUrl: "https://arnold.rip",
   cvUrl:
     "https://drive.google.com/file/d/1YxssSR_6g5GyBPznG38MxSdjjLJiu0T2/view?usp=sharing",
