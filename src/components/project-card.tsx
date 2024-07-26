@@ -1,11 +1,11 @@
-import { Badge } from './ui/badge';
+import { Badge } from "./ui/badge";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from './ui/card';
+} from "./ui/card";
 
 interface Props {
   title: string;
@@ -16,7 +16,7 @@ interface Props {
 
 export function ProjectCard({ title, description, tags, link }: Props) {
   return (
-    <Card className="flex flex-col overflow-hidden border border-muted p-3">
+    <Card className="flex flex-col overflow-hidden border p-3">
       <CardHeader className="">
         <div className="space-y-1">
           <CardTitle className="text-base">
@@ -24,6 +24,7 @@ export function ProjectCard({ title, description, tags, link }: Props) {
               <a
                 href={link}
                 target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-1 hover:underline"
               >
                 {title}{" "}

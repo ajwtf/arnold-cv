@@ -1,13 +1,15 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
+import Link from "next/link";
 
-import { CommandPalette } from '@/components/command-palette';
-import { ProjectCard } from '@/components/project-card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Section } from '@/components/ui/section';
-import { RESUME_DATA } from '@/data/resume-data';
+import { CommandPalette } from "@/components/command-palette";
+import { ProjectCard } from "@/components/project-card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Section } from "@/components/ui/section";
+import { RESUME_DATA } from "@/data/resume-data";
+import { MailIcon } from "lucide-react";
 
 export const metadata: Metadata = {
   title: `${RESUME_DATA.websiteTitle}`,
@@ -23,45 +25,46 @@ export default function Page() {
             <div className="my-10 print:hidden xl:hidden"></div>
 
             <h1 className="text-2xl font-bold">{RESUME_DATA.name}</h1>
+
             <p className="max-w-md text-pretty text-sm text-muted-foreground print:text-[12px]">
               {RESUME_DATA.about}
             </p>
+
             <p className="max-w-md items-center text-pretty text-xs text-muted-foreground">
               <a
                 className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
                 href={RESUME_DATA.locationLink}
                 target="_blank"
+                rel="noreferrer"
               >
                 {/* <GlobeIcon className="size-3" /> */}
                 {RESUME_DATA.location}
               </a>
             </p>
 
-            <div className="flex gap-x-1 pt-1 text-sm text-muted-foreground print:hidden">
+            <div className="flex gap-x-2 pt-1 text-sm text-muted-foreground print:hidden">
               {RESUME_DATA.contact.social.map((social) => (
                 <Button
                   key={social.name}
                   className="size-8"
                   variant="outline"
                   size="icon"
-                  asChild
                 >
-                  <a href={social.url} target="_blank">
+                  <Link href={social.url} target="_blank" rel="noreferrer">
                     <social.icon className="size-4" />
-                  </a>
+                  </Link>
                 </Button>
               ))}
 
-              {RESUME_DATA.contact.email ? (
-                <Button
-                  className="size-8"
-                  variant="outline"
-                  size="icon"
-                  asChild
-                >
-                  <a href={RESUME_DATA.contact.email.url}>
-                    <RESUME_DATA.contact.email.icon className="size-4" />
-                  </a>
+              {RESUME_DATA.contact.email.mailto ? (
+                <Button className="size-8" variant="outline" size="icon">
+                  <Link
+                    href={RESUME_DATA.contact.email.mailto}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <MailIcon className="size-4" />
+                  </Link>
                 </Button>
               ) : null}
 
@@ -80,12 +83,12 @@ export default function Page() {
             </div>
 
             <div className="hidden flex-col gap-x-1 text-sm text-muted-foreground print:flex print:text-[12px]">
-              {RESUME_DATA.contact.email ? (
-                <a href={RESUME_DATA.contact.email.url}>
+              {RESUME_DATA.contact.email.mailto ? (
+                <Link href={RESUME_DATA.contact.email.mailto}>
                   <span className="underline">
-                    {RESUME_DATA.contact.email.url}
+                    {RESUME_DATA.contact.email.mailto}
                   </span>
-                </a>
+                </Link>
               ) : null}
 
               {/* {RESUME_DATA.contact.tel ? (
@@ -96,7 +99,7 @@ export default function Page() {
             </div>
           </div>
 
-          <Avatar className="size-24">
+          <Avatar className="size-28">
             <AvatarImage alt={RESUME_DATA.name} src={RESUME_DATA.avatarUrl} />
             <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
           </Avatar>
@@ -115,12 +118,13 @@ export default function Page() {
             return (
               <Card key={work.company}>
                 <CardHeader>
-                  <div className="flex items-center justify-between gap-x-2 text-base mt-2">
-                    <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
+                  <div className="flex items-center justify-between gap-x-2 text-base mt-1">
+                    <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none text-sm ">
                       <a
                         className="hover:underline"
                         href={work.link}
                         target="_blank"
+                        rel="noreferrer"
                       >
                         {work.company}
                       </a>
@@ -129,7 +133,7 @@ export default function Page() {
                         {work.badges.map((badge) => (
                           <Badge
                             variant="secondary"
-                            className="align-middle text-xs print:text-[8px] print:leading-tight print:px-1 print:py-0.5 font-sans"
+                            className="align-middle text-xs print:text-[8px] print:leading-tight print:px-1 print:py-0.5"
                             key={badge}
                           >
                             {badge}
@@ -142,12 +146,12 @@ export default function Page() {
                     </div>
                   </div>
 
-                  <h4 className="text-sm leading-none print:text-[12px]">
+                  <h4 className="text-xs leading-none print:text-[12px]">
                     {work.title}
                   </h4>
                 </CardHeader>
 
-                <CardContent className="mt-2 text-xs print:text-[10px] font-sans">
+                <CardContent className="mt-2 print:text-[10px]">
                   {work.description}
                 </CardContent>
               </Card>
@@ -162,7 +166,7 @@ export default function Page() {
               <Card key={education.school}>
                 <CardHeader>
                   <div className="flex items-center justify-between gap-x-2 text-base">
-                    <h3 className="font-semibold leading-none">
+                    <h3 className="font-semibold leading-none text-sm">
                       {education.school}
                     </h3>
 
@@ -171,7 +175,7 @@ export default function Page() {
                     </div> */}
                   </div>
                 </CardHeader>
-                <CardContent className="mt-2 print:text-[12px] font-sans">
+                <CardContent className="mt-2 print:text-[12px]">
                   {education.degree}
                 </CardContent>
               </Card>
@@ -180,7 +184,7 @@ export default function Page() {
         </Section>
 
         <Section>
-          <h2 className="text-xl font-bold">skills</h2>
+          <h2 className="text-xl font-bold mt-2">skills</h2>
           <div className="flex flex-wrap gap-1">
             {RESUME_DATA.skills.map((skill) => {
               return (
@@ -193,8 +197,8 @@ export default function Page() {
         </Section>
 
         <Section className="print-force-new-page scroll-mb-16">
-          <h2 className="text-xl font-bold">projects</h2>
-          <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3">
+          <h2 className="text-xl font-bold mt-2">projects</h2>
+          <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3 px-3">
             {RESUME_DATA.projects.map((project) => {
               return (
                 <ProjectCard

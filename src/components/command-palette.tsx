@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from 'react';
+import * as React from "react";
 
-import { CommandIcon } from 'lucide-react';
+import { CommandIcon } from "lucide-react";
 
 import {
   CommandDialog,
@@ -13,10 +13,10 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from '@/components/ui/command';
-import { RESUME_DATA } from '@/data/resume-data';
+} from "@/components/ui/command";
+import { RESUME_DATA } from "@/data/resume-data";
 
-import { Button } from './ui/button';
+import { Button } from "./ui/button";
 
 interface Props {
   links: { url: string; title: string }[];
@@ -39,22 +39,22 @@ export const CommandPalette = ({ links }: Props) => {
 
   return (
     <>
-      <p className="fixed bottom-0 left-0 right-0 hidden border-t  bg-white p-1 text-center text-sm text-muted-foreground print:hidden xl:block">
+      <p className="fixed bottom-0 left-0 right-0 hidden border-t  bg-white p-1 text-center text-xs text-muted-foreground print:hidden xl:block">
         To open the command palette:{" "}
         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-          <span className="text-xs">⌘</span>
+          <span className="text-xs ">⌘</span>
         </kbd>{" "}
         +{" "}
         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
-          <span className="text-xs">K</span>
+          <span className="text-xs ">K</span>
         </kbd>{" "}
       </p>
 
       <Button
         onClick={() => setOpen((open) => !open)}
-        variant="outline"
+        variant="secondary"
         size="icon"
-        className="fixed top-4 right-4 flex shadow-2xl print:hidden xl:hidden"
+        className="fixed top-4 right-4 flex shadow-2xl print:hidden xl:hidden size-8"
       >
         <CommandIcon className="my-6 size-4 print:hidden" />
       </Button>
@@ -65,20 +65,7 @@ export const CommandPalette = ({ links }: Props) => {
         <CommandList>
           <CommandEmpty>No results found</CommandEmpty>
 
-          <CommandGroup heading="CV">
-            <CommandItem
-              onSelect={() => {
-                setOpen(false);
-                window.open(RESUME_DATA.cvUrl, "_blank");
-              }}
-            >
-              <span>CV</span>
-            </CommandItem>
-          </CommandGroup>
-
-          <CommandSeparator />
-
-          <CommandGroup heading="Socials">
+          <CommandGroup heading="Links">
             {links.map(({ url, title }) => (
               <CommandItem
                 key={url}
@@ -95,9 +82,9 @@ export const CommandPalette = ({ links }: Props) => {
             ))}
           </CommandGroup>
 
-          <CommandSeparator />
+          {/* <CommandSeparator /> */}
 
-          <CommandGroup heading="Actions">
+          {/* <CommandGroup heading="Actions">
             <CommandItem
               onSelect={() => {
                 setOpen(false);
@@ -107,7 +94,7 @@ export const CommandPalette = ({ links }: Props) => {
               <span>Print</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
-          </CommandGroup>
+          </CommandGroup> */}
         </CommandList>
       </CommandDialog>
     </>

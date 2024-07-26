@@ -1,5 +1,5 @@
-import { GitHubIcon } from './GitHubIcon';
-import { LinkedInIcon } from './LinkedInIcon';
-import { MailIcon } from './MailIcon';
+import { GitHubIcon } from "./GitHubIcon";
+import { LinkedInIcon } from "./LinkedInIcon";
+import { ResumeIcon } from "./ResumeIcon";
 
-export { GitHubIcon, LinkedInIcon, MailIcon };
+export { GitHubIcon, LinkedInIcon, ResumeIcon };

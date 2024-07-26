@@ -1,5 +1,4 @@
-import { GitHubIcon, LinkedInIcon } from '@/components/icons';
-import { MailIcon } from '@/components/icons/MailIcon';
+import { GitHubIcon, LinkedInIcon, ResumeIcon } from "@/components/icons";
 
 export const RESUME_DATA = {
   websiteTitle: "aj",
@@ -14,13 +13,11 @@ export const RESUME_DATA = {
   avatarUrl:
     "https://github.com/ajwtf/arnold-cv/blob/main/src/app/glasses.gif?raw=true",
   websiteUrl: "https://arnold.rip",
-  cvUrl:
-    "https://drive.google.com/file/d/1YxssSR_6g5GyBPznG38MxSdjjLJiu0T2/view?usp=sharing",
+
   contact: {
     email: {
       emailAddress: "arnoldsouth@gmail.com",
-      url: "mailto:arnoldsouth@gmail.com",
-      icon: MailIcon,
+      mailto: "mailto:arnoldsouth@gmail.com",
     },
     // tel: "",
     social: [
@@ -34,12 +31,17 @@ export const RESUME_DATA = {
         url: "https://www.linkedin.com/in/arnoldsouth/",
         icon: LinkedInIcon,
       },
+      {
+        name: "CV",
+        url: "https://drive.google.com/file/d/1YxssSR_6g5GyBPznG38MxSdjjLJiu0T2/view?usp=sharing",
+        icon: ResumeIcon,
+      },
     ],
   },
   education: [
     {
       school: "University of Illinois at Chicago",
-      degree: "Bachelors of Science in Accounting",
+      degree: "Bachelor of Science in Accounting",
       // start: "",
       // end: "",
     },
