@@ -26,25 +26,17 @@ interface Props {
 
 // export default GoogleTagManager;
 
-const gtmScriptBody = (gtmId: string) => {
-  return `
-            <iframe
-              src="https://www.googletagmanager.com/ns.html?id=${gtmId}"
-              height="0"
-              width="0"
-              style="display:none;visibility:hidden"
-            ></iframe>
-          `;
-};
-
 export const GoogleTagManagerBodyScript = ({ gtmId }: Props) => {
   return (
     <>
-      <noscript
-        dangerouslySetInnerHTML={{
-          __html: gtmScriptBody(gtmId),
-        }}
-      />
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+          height='0'
+          width='0'
+          style={{ display: 'none', visibility: 'hidden' }}
+        ></iframe>
+      </noscript>
     </>
   );
 };
