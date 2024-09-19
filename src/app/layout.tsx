@@ -19,10 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
+      <head>
         <GoogleTagManager gtmId='GTM-P97JQ7TB' />
-        <main>{children}</main>
-      </body>
+      </head>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
