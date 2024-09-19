@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
+import { GoogleTagManagerBodyScript } from '@/components/google-tag-manager';
 import { GoogleTagManager } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -19,10 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <head>
-        <GoogleTagManager gtmId='GTM-P97JQ7TB' />
-      </head>
-      <body className={inter.className}>{children}</body>
+      <GoogleTagManager gtmId='GTM-P97JQ7TB' />
+
+      <body className={inter.className}>
+        <GoogleTagManagerBodyScript gtmId='GTM-P97JQ7TB' />
+        {children}
+      </body>
     </html>
   );
 }
